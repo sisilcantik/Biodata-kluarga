@@ -1,89 +1,61 @@
 using System;
-
-namespace MyApplication
+public class HelloWorld
 {
-  class Keluarga
-  {
-    public string Name   
-    { get; set; }  
-    public string Ttl
-    { get; set; }
-    public string Umur
-    { get; set; }
-    public virtual void hobi(){
-        Console.WriteLine("hobi");
-    }
-  }
-  class Ayah : Keluarga {
-      public override void hobi(){
-          Console.WriteLine("hobi: servis");
-      }
-  }
-  class Ibu : Keluarga {
-      public override void hobi(){
-          Console.WriteLine("hobi: masak");
-      }
-  }
-  class Adik : Keluarga {
-      public override void hobi(){
-          Console.WriteLine("hobi: menangis");
-      }
-  }
-  class Aku : Keluarga {
-      public override void hobi(){
-          Console.WriteLine("hobi: mengaji");
-      }
-  }
-  class Program
-  {  
-    static void Main(string[] args)
+    static public void Main ()
     {
-      Keluarga myAy = new Keluarga();
-      myAy.Name = "Syamsudin";
-      myAy.Ttl ="Pasuruan, 20 Maret 1981";
-      myAy.Umur ="42";
-      Console.WriteLine("nama ayah:" + myAy.Name);
-Console.WriteLine("Ttl:" + myAy.Ttl);
-Console.WriteLine("Umur:"+ myAy.Umur);
-      Keluarga myAyah = new Ayah();
-      myAyah.hobi();
-      //biodata Ayah
-      Console.WriteLine("===============");
-      Keluarga myIb = new Keluarga();
-      myIb.Name = "Mufidah";
-      myIb.Ttl ="Pasuruan, 26 Juni 1986";
-      myIb.Umur ="37";
-      Console.WriteLine("nama ibu:" + myIb.Name);
-Console.WriteLine("Ttl:" + myIb.Ttl);
-Console.WriteLine("Umur:"+myIb.Umur);
-      Keluarga myIbu = new Ibu();
-      myIbu.hobi();
-      //biodata ibu
-      Console.WriteLine("===============");
-      Keluarga myAdk = new Keluarga();
-      myAdk.Name = "Mukh.Zayyan Arkana A.";
-      myAdk.Ttl ="Pasuruan, 28 September 2018";
-      myAdk.Umur ="5";
-      Console.WriteLine("nama Adik:" + myAdk.Name);
-Console.WriteLine("Ttl:" + myAdk.Ttl);
-Console.WriteLine("Umur:"+ myAdk.Umur);
-      Keluarga myAdik = new  Adik();
-      myAdik.hobi();
-      //biodata Adik
-      Console.WriteLine("===============");
-      Keluarga myAk = new Keluarga();
-      myAk.Name = "Silvia Maulidina";
-      myAk.Ttl ="Pasuruan, 8 April 2007";
-      myAk.Umur ="16";
-      Console.WriteLine("namaKu:" + myAk.Name);
-Console.WriteLine("Ttl:" + myAk.Ttl);
-Console.WriteLine("Umur:"+ myAk.Umur);
-      Keluarga myAku = new Aku();
-      myAku.hobi();
-      //biodataku
-      
-
-
+     familyhobi ak = new familyhobi();
+     familyhobi ibu = new Ibu();
+     familyhobi ayah = new Ayah();
+     familyhobi anak = new Anak();
+     
+     familydata ibuku = new familydata("Mufidah",37, 081226406546);
+    familydata ayahku = new familydata("Syamsudin",42, 082143492811);
+    familydata aku = new familydata("Silvia Maulidina",16,082143034120);
+     Console.WriteLine("DATA IBU:\n"+ibuku.nama+"\n"+ibuku.umur+"\n"+ibuku.nohp);
+     ibu.Hobi();
+   Console.WriteLine("DATA AYAH:\n"+ayahku.nama+"\n"+ayahku.umur+"\n"+ayahku.nohp);
+     ayah.Hobi();
+     Console.WriteLine("DATA ANAK:\n"+aku.nama+"\n"+aku.umur+"\n"+aku.nohp);
+     anak.Hobi();
     }
-  }
+    class familydata
+    {
+        public string nama;
+        public int umur;
+        public long nohp;
+        public familydata(string Nama,int Umur,long Nohp)
+        {
+            nama = Nama;
+            umur = Umur;
+            nohp = Nohp;
+        }
+    }
+    class familyhobi 
+    {
+        public virtual void Hobi()
+        {
+            Console.WriteLine("Hobi");
+        }
+    }
+    class Ibu:familyhobi
+    {
+        public override void Hobi()
+        {
+            Console.WriteLine("Masak");
+        }
+    }
+    class Ayah:familyhobi
+    {
+        public override void Hobi()
+        {
+            Console.WriteLine("servis");
+        }
+    }
+    class Anak:familyhobi
+    {
+        public override void Hobi()
+        {
+            Console.WriteLine("mengaji");
+        }
+    }
 }
